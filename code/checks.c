@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 01:12:55 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/03 18:31:51 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/16 22:46:25 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	is_walkable(t_vars *vars, int x, int y)
 {
 	if (vars->map->copy[y][x] == '1' || vars->map->copy[y][x] == 'E')
 		return (0);
+	vars->is_moving = 1;
 	return (1);
 }
 
@@ -70,7 +71,7 @@ void	win(t_vars *vars, int x, int y)
 		vars->can_move = 0;
 		mlx_clear_window(vars->mlx, vars->win);
 		mlx_string_put(vars->mlx, vars->win, screen_x, screen_y, 0xFFFA9E,
-			"YOU WON");
+				"YOU WON");
 		write(1, "🏆🏆YOU WON!!🏆🏆\n", 27);
 	}
 }

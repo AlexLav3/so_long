@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 03:46:29 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/14 23:22:09 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/16 22:40:47 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_exit(t_vars *vars, t_animation *animation)
 {
-	clean(vars, animation);
-	clean_vars(vars);
 	if (vars->win)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
@@ -31,38 +29,38 @@ void	events(t_vars *vars, t_animation *animation)
 		return ;
 	x = vars->player_x;
 	y = vars->player_y;
-	set_frames(animation, vars);
-	set_frames_u_d(animation, vars);
 	change_sprite(animation, vars);
 	collect(vars, x, y);
-	win(vars, x, y);
+	win(vars, vars->player_x, vars->player_y);
 	update_animation(animation, vars, x, y);
 }
 
-int	ft_key_press(int keycode, t_vars *vars, t_animation *animation, t_map *map)
+int	ft_key_press(int keycode, void *v)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	t_vars	*vars;
 
+	vars = v;
 	x = vars->player_x;
 	y = vars->player_y;
 	if (keycode == XK_Escape || keycode == 3)
 	{
 		vars->can_move = 0;
-		ft_close(vars, animation);
+		ft_close(vars, vars->animation);
 		return (0);
 	}
 	else if (vars->can_move == 1)
 	{
-		move(keycode, vars, animation);
+		move(keycode, vars, vars->animation);
 		vars->moves++;
 	}
 	vars->is_moving = 0;
-	ft_printf("key: %d\n", keycode);
-	events(vars, animation);
+	events(vars, vars->animation);
 	ft_printf("%d\n", vars->moves);
 	return (0);
 }
+
 int	ft_close(t_vars *vars, t_animation *animation)
 {
 	if (!vars->is_closed)
@@ -72,14 +70,17 @@ int	ft_close(t_vars *vars, t_animation *animation)
 	}
 	return (0);
 }
-int	ft_key_release(int keycode, t_vars *vars, t_animation *animation)
-{
-	int	x;
-	int	y;
 
+int	ft_key_release(int keycode, void *v)
+{
+	int		x;
+	int		y;
+	t_vars	*vars;
+
+	vars = v;
 	x = vars->player_x;
 	y = vars->player_y;
 	if (keycode == 97 || keycode == 100 || keycode == 115 || keycode == 119)
-		update_animation(animation, vars, x, y);
+		update_animation(vars->animation, vars, x, y);
 	return (0);
 }
