@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 20:31:02 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/16 22:13:43 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/17 00:01:41 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void			load_map(t_vars *vars);
 void			find_pos(t_vars *vars, t_animation *animation);
 int				ft_key_release(int keycode, void *v);
 
-void			player_first_pos(t_animation *animation, t_vars *vars,
+void			load_frame(t_animation *animation, t_vars *vars,
 					int map_x, int map_y);
 void			set_frames(t_animation *animation, t_vars *vars);
 void			choose_image(char *image_name, t_vars *vars);
