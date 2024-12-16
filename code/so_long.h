@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 20:31:02 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/17 00:01:41 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/17 00:07:13 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ void			choose_image(char *image_name, t_vars *vars);
 int				update_animation(t_animation *animation, t_vars *vars, int x,
 					int y);
 
-void			ft_exit(t_vars *vars, t_animation *animation);
+void			ft_exit(t_vars *vars);
 int				ft_key_press(int keycode, void *v);
-int				ft_close(t_vars *vars, t_animation *animation);
+int				ft_close(t_vars *vars);
 
 #endif

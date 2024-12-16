@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:47:49 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/17 00:01:41 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/17 00:15:54 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ void	set_map(t_vars *vars)
 
 void	load_map(t_vars *vars)
 {
-	int	x;
-	int	y;
-	int	type;
+	int		x;
+	int		y;
+	char	type;
 
 	y = 0;
-	if (vars->is_closed == 1)
-		return ;
 	while (y < vars->map->y)
 	{
 		x = 0;
@@ -41,16 +39,16 @@ void	load_map(t_vars *vars)
 			type = vars->map->copy[y][x];
 			if (type == '0')
 				mlx_put_image_to_window(vars->mlx, vars->win, vars->map->floor,
-					x * TILE_SIZE, y * TILE_SIZE);
+						x * TILE_SIZE, y * TILE_SIZE);
 			else if (type == '1')
 				mlx_put_image_to_window(vars->mlx, vars->win, vars->map->wall1,
-					x * TILE_SIZE, y * TILE_SIZE);
+						x * TILE_SIZE, y * TILE_SIZE);
 			else if (type == 'C')
 				mlx_put_image_to_window(vars->mlx, vars->win, vars->collect, x
-					* TILE_SIZE, y * TILE_SIZE);
+						* TILE_SIZE, y * TILE_SIZE);
 			else if (type == 'E')
 				mlx_put_image_to_window(vars->mlx, vars->win, vars->map->exit, x
-					* TILE_SIZE, y * TILE_SIZE);
+						* TILE_SIZE, y * TILE_SIZE);
 			x++;
 		}
 		y++;
@@ -104,10 +102,8 @@ void	find_pos(t_vars *vars, t_animation *animation)
 				vars->map->copy[y][x] = '0';
 				vars->player_x = x;
 				vars->player_y = y;
-				// animation->direction = 1;
 				change_sprite(animation, vars);
-				load_frame(animation, vars, vars->player_x,
-					vars->player_y);
+				load_frame(animation, vars, vars->player_x, vars->player_y);
 				return ;
 			}
 			x++;
