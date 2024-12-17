@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:47:49 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/17 00:15:54 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/17 20:09:39 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	load_map(t_vars *vars)
 		y++;
 	}
 }
-
+//ft_split returns **char, that is why we are reading, joining and splitting again.
+//we need ** for the copy to be able to itinerate through the map with [x][y]
 void	inizialize_map(t_map *map)
 {
 	int		fd;
