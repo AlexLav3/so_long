@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:47:49 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/21 17:42:31 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:52:18 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	inizialize_map(t_map *map)
 	map->file = malloc(1);
 	map->file[0] = '\0';
 	fd = open(map->image_file, O_RDONLY);
-	if (fd < 0)
+	if (fd < 0 || !map->file)
 		return (free(map->file));
 	line = get_next_line(fd);
 	while (line)
