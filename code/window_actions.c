@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 03:46:29 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/17 00:06:58 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:49:04 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_exit(t_vars *vars)
 	}
 	exit(0);
 }
+
 void	events(t_vars *vars, t_animation *animation)
 {
 	if (vars->is_closed)

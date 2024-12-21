@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 21:24:11 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/17 00:10:44 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:48:48 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	init_game(t_vars *vars, t_animation *animation, t_map *map, char **argv)
 		ft_printf("invalid map\n");
 		return (ft_close(vars), 0);
 	}
-	init_collect(vars);
 	map_y_x(vars);
 	set_map(vars);
+	init_collect(vars);
 	load_map(vars);
 	exit = is_exit(vars);
 	if (exit != 1 || count_coll(vars) < 1)
@@ -84,6 +84,7 @@ void	clean(t_vars *vars, t_animation *animation)
 		i++;
 	}
 }
+
 void	clean_vars(t_vars *vars)
 {
 	int	i;
@@ -106,4 +107,27 @@ void	clean_vars(t_vars *vars)
 		}
 		free(vars->map->copy);
 	}
+}
+
+void	map_y_x(t_vars *vars)
+{
+	int	x;
+	int	y;
+	int	max_width;
+
+	if (vars->map->copy == NULL)
+		return ;
+	y = 0;
+	max_width = 0;
+	while (vars->map->copy[y])
+	{
+		x = 0;
+		while (vars->map->copy[y][x])
+			x++;
+		if (x > max_width)
+			max_width = x;
+		y++;
+	}
+	vars->map->x = max_width;
+	vars->map->y = y;
 }

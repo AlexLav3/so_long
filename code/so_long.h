@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 20:31:02 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/17 19:39:37 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:48:35 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ typedef struct s_vars
 	int			is_moving;
 	int			moves;
 }				t_vars;
-
 
 void			change_sprite(t_animation *animation, t_vars *vars);
 void			clean_collect(t_coll *collect);

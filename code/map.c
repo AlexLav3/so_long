@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:47:49 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/17 20:09:39 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:42:31 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	set_map(t_vars *vars)
 	vars->map->wall1 = mlx_xpm_file_to_image(vars->mlx, "map/wall1.xpm", &a,
 			&a);
 	vars->map->exit = mlx_xpm_file_to_image(vars->mlx, "map/exit.xpm", &a, &a);
+	vars->collect = mlx_xpm_file_to_image(vars->mlx, "coll/coll1.xpm", &a, &a);
 }
 
 void	load_map(t_vars *vars)
@@ -39,23 +40,22 @@ void	load_map(t_vars *vars)
 			type = vars->map->copy[y][x];
 			if (type == '0')
 				mlx_put_image_to_window(vars->mlx, vars->win, vars->map->floor,
-						x * TILE_SIZE, y * TILE_SIZE);
+					x * TILE_SIZE, y * TILE_SIZE);
 			else if (type == '1')
 				mlx_put_image_to_window(vars->mlx, vars->win, vars->map->wall1,
-						x * TILE_SIZE, y * TILE_SIZE);
-			else if (type == 'C')
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->collect, x
-						* TILE_SIZE, y * TILE_SIZE);
+					x * TILE_SIZE, y * TILE_SIZE);
 			else if (type == 'E')
 				mlx_put_image_to_window(vars->mlx, vars->win, vars->map->exit, x
-						* TILE_SIZE, y * TILE_SIZE);
+					* TILE_SIZE, y * TILE_SIZE);
 			x++;
 		}
 		y++;
 	}
 }
-//ft_split returns **char, that is why we are reading, joining and splitting again.
+//ft_split returns **char, that is why we are reading,
+//joining and splitting again.
 //we need ** for the copy to be able to itinerate through the map with [x][y]
+
 void	inizialize_map(t_map *map)
 {
 	int		fd;
@@ -66,23 +66,21 @@ void	inizialize_map(t_map *map)
 	fd = open(map->image_file, O_RDONLY);
 	if (fd < 0)
 		return (free(map->file));
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line)
 	{
 		map->file = ft_strjoin_g(map->file, line);
 		free(line);
+		line = get_next_line(fd);
 	}
 	if (map->file)
 	{
 		map->copy = ft_split(map->file, '\n');
 		if (!map->copy)
-		{
 			map->file = NULL;
-			free(map->copy);
-		}
 	}
 	else
 		map->copy = NULL;
-	free(map->file);
 	close(fd);
 }
 
@@ -123,27 +121,4 @@ int	get_map_dimensions(t_vars *vars, int *rows, int *columns)
 	else
 		*columns = 0;
 	return (0);
-}
-
-void	map_y_x(t_vars *vars)
-{
-	int	x;
-	int	y;
-	int	max_width;
-
-	if (vars->map->copy == NULL)
-		return ;
-	y = 0;
-	max_width = 0;
-	while (vars->map->copy[y])
-	{
-		x = 0;
-		while (vars->map->copy[y][x])
-			x++;
-		if (x > max_width)
-			max_width = x;
-		y++;
-	}
-	vars->map->x = max_width;
-	vars->map->y = y;
 }
