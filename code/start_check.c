@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 21:24:11 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/21 17:48:48 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/29 23:44:10 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ int	init_game(t_vars *vars, t_animation *animation, t_map *map, char **argv)
 		ft_printf("invalid map\n");
 		return (ft_close(vars), 0);
 	}
-	map_y_x(vars);
 	set_map(vars);
-	init_collect(vars);
+	vars->win = mlx_new_window(vars->mlx, vars->window_width,
+			vars->window_height, "so_long");
 	load_map(vars);
+	init_collect(vars);
 	exit = is_exit(vars);
 	if (exit != 1 || count_coll(vars) < 1)
 		return (ft_printf("invalid map\n"), ft_close(vars), 0);

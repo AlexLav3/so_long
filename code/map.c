@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:47:49 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/22 19:10:59 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/29 23:54:15 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	set_map(t_vars *vars)
 {
 	int	a;
 
+	map_y_x(vars);
 	a = TILE_SIZE;
 	vars->map->floor = mlx_xpm_file_to_image(vars->mlx, "map/floor.xpm", &a,
 			&a);
@@ -52,36 +53,32 @@ void	load_map(t_vars *vars)
 		y++;
 	}
 }
-//ft_split returns **char, that is why we are reading,
-//joining and splitting again.
-//we need ** for the copy to be able to itinerate through the map with [x][y]
 
 void	inizialize_map(t_map *map)
 {
 	int		fd;
 	char	*line;
+	int		count;
+	int		y;
 
-	map->file = malloc(1);
-	map->file[0] = '\0';
+	count = 0;
+	y = 0;
 	fd = open(map->image_file, O_RDONLY);
-	if (fd < 0 || !map->file)
-		return (free(map->file));
+	if (fd < 0)
+		return ;
 	line = get_next_line(fd);
 	while (line)
 	{
-		map->file = ft_strjoin_g(map->file, line);
+		count++;
 		free(line);
 		line = get_next_line(fd);
 	}
-	if (map->file)
-	{
-		map->copy = ft_split(map->file, '\n');
-		if (!map->copy)
-			map->file = NULL;
-	}
-	else
-		map->copy = NULL;
 	close(fd);
+	map->count = count;
+	map->copy = malloc((count + 1) * sizeof(char *));
+	if (!map->copy)
+		return ;
+	populate_map(map);
 }
 
 void	find_pos(t_vars *vars, t_animation *animation)
@@ -117,8 +114,10 @@ int	get_map_dimensions(t_vars *vars, int *rows, int *columns)
 	while (vars->map->copy[*rows] != NULL)
 		(*rows)++;
 	if (*rows > 0)
-		*columns = ft_strlen(vars->map->copy[0]);
+		*columns = ft_strlen(vars->map->copy[0]) - 1;
 	else
 		*columns = 0;
+	vars->window_height = *rows * TILE_SIZE;
+	vars->window_width = *columns * TILE_SIZE;
 	return (0);
 }

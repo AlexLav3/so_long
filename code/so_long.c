@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 19:38:33 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/21 17:53:46 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/29 22:43:14 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		vars.mlx = mlx_init();
-		vars.win = mlx_new_window(vars.mlx, WINDOW_W, WINDOW_H, "so_long");
 		vars.is_closed = 0;
 		if (init_game(&vars, &animation, map, argv))
 		{

@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 20:31:02 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/21 17:48:35 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/29 23:48:26 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_map
 	char		*wall1;
 	char		*exit;
 	char		*col;
+	int			count;
 	int			y;
 	int			x;
 	char		**copy;
@@ -54,6 +55,7 @@ typedef struct s_coll
 	int			y;
 	int			x;
 }				t_coll;
+
 typedef struct s_animation
 {
 	void		**frames;
@@ -68,6 +70,8 @@ typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
+	int			window_width;
+	int			window_height;
 	char		*addr;
 	t_map		*map;
 	t_animation	*animation;
@@ -79,6 +83,8 @@ typedef struct s_vars
 	int			is_moving;
 	int			moves;
 }				t_vars;
+
+void			populate_map(t_map *map);
 
 void			change_sprite(t_animation *animation, t_vars *vars);
 void			clean_collect(t_coll *collect);
@@ -112,8 +118,8 @@ void			load_map(t_vars *vars);
 void			find_pos(t_vars *vars, t_animation *animation);
 int				ft_key_release(int keycode, void *v);
 
-void			load_frame(t_animation *animation, t_vars *vars,
-					int map_x, int map_y);
+void			load_frame(t_animation *animation, t_vars *vars, int map_x,
+					int map_y);
 void			set_frames(t_animation *animation, t_vars *vars);
 void			choose_image(char *image_name, t_vars *vars);
 int				update_animation(t_animation *animation, t_vars *vars, int x,

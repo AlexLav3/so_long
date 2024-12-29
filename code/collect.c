@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:50:41 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/21 17:47:58 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/29 23:53:59 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,31 @@ int	update_animation(t_animation *animation, t_vars *vars, int x, int y)
 	load_map(vars);
 	load_frame(animation, vars, x, y);
 	return (0);
+}
+
+void	populate_map(t_map *map)
+{
+	int	fd;
+	int	y;
+
+	y = 0;
+	fd = open(map->image_file, O_RDONLY);
+	if (fd < 0)
+		return (free(map->copy));
+	while (y < map->count)
+	{
+		map->copy[y] = get_next_line(fd);
+		if (!map->copy[y])
+		{
+			while (--y >= 0)
+				free(map->copy[y]);
+			free(map->copy);
+			map->copy = NULL;
+			close(fd);
+			return ;
+		}
+		y++;
+	}
+	map->copy[y++] = NULL;
+	close(fd);
 }
