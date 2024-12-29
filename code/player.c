@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 03:36:31 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/21 17:47:46 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/30 00:02:57 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,18 @@ void	move(int keycode, t_vars *vars, t_animation *animation)
 	{
 		vars->player_y--;
 		animation->direction = 2;
+		vars->moves++;
+		ft_printf("%d\n", vars->moves);
 	}
 	else if (keycode == 97 && is_walkable(vars, vars->player_x - 1,
 			vars->player_y))
 	{
 		vars->player_x--;
 		animation->direction = -1;
+		vars->moves++;
+		ft_printf("%d\n", vars->moves);
 	}
-	else if (keycode == 115 && is_walkable(vars, vars->player_x, vars->player_y
-			+ 1))
-	{
-		vars->player_y++;
-		animation->direction = 3;
-	}
-	else if (keycode == 100 && is_walkable(vars, vars->player_x + 1,
-			vars->player_y))
-	{
-		vars->player_x++;
-		animation->direction = 1;
-	}
+	move_sec(keycode, vars, animation);
 }
 
 void	set_frames_u_d(t_animation *animation, t_vars *vars)

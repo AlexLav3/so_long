@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 01:12:55 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/21 17:36:26 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/30 00:04:29 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ void	win(t_vars *vars, int x, int y)
 		mlx_string_put(vars->mlx, vars->win, screen_x, screen_y, 0xFFFA9E,
 			"YOU WON");
 		write(1, "🏆🏆YOU WON!!🏆🏆\n", 27);
+		ft_close(vars);
 	}
 }

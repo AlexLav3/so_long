@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 20:31:02 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/29 23:48:26 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/30 00:03:11 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define WINDOW_W 690
-# define WINDOW_H 390
 # define TILE_SIZE 30
 # define MAX_FRAMES 12
 # define ANIMATION_DELAY 12
@@ -85,7 +83,7 @@ typedef struct s_vars
 }				t_vars;
 
 void			populate_map(t_map *map);
-
+void			move_sec(int keycode, t_vars *vars, t_animation *animation);
 void			change_sprite(t_animation *animation, t_vars *vars);
 void			clean_collect(t_coll *collect);
 void			clean_map(t_map *map);

@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 03:46:29 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/29 23:53:19 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/30 00:02:50 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,9 @@ int	ft_key_press(int keycode, void *v)
 		return (0);
 	}
 	else if (vars->can_move == 1)
-	{
 		move(keycode, vars, vars->animation);
-		vars->moves++;
-	}
 	vars->is_moving = 0;
 	events(vars, vars->animation);
-	ft_printf("%d\n", vars->moves);
 	return (0);
 }
 

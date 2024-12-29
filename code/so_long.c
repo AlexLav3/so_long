@@ -6,11 +6,31 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 19:38:33 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/29 22:43:14 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/30 00:04:47 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	move_sec(int keycode, t_vars *vars, t_animation *animation)
+{
+	if (keycode == 115 && is_walkable(vars, vars->player_x, vars->player_y
+			+ 1))
+	{
+		vars->player_y++;
+		animation->direction = 3;
+		vars->moves++;
+		ft_printf("%d\n", vars->moves);
+	}
+	else if (keycode == 100 && is_walkable(vars, vars->player_x + 1,
+			vars->player_y))
+	{
+		vars->player_x++;
+		animation->direction = 1;
+		vars->moves++;
+		ft_printf("%d\n", vars->moves);
+	}
+}
 
 int	main(int argc, char **argv)
 {
