@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 03:46:29 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/30 00:02:50 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/30 01:56:52 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_exit(t_vars *vars)
 {
-	if (vars->win)
+	if (vars->win && vars->mlx)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
 	}

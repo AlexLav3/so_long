@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:47:49 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/29 23:54:15 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/30 01:56:16 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,7 @@ int	get_map_dimensions(t_vars *vars, int *rows, int *columns)
 		*columns = 0;
 	vars->window_height = *rows * TILE_SIZE;
 	vars->window_width = *columns * TILE_SIZE;
+	if (vars->window_height == vars->window_width)
+		return (1);
 	return (0);
 }

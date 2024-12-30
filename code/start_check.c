@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 21:24:11 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/29 23:44:10 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/30 01:55:04 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	init_game(t_vars *vars, t_animation *animation, t_map *map, char **argv)
 	if (!check_map(vars))
 	{
 		ft_printf("invalid map\n");
-		return (ft_close(vars), 0);
+		return (0);
 	}
 	set_map(vars);
 	vars->win = mlx_new_window(vars->mlx, vars->window_width,
