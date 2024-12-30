@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 21:24:11 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/30 01:55:04 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/30 20:00:39 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	init_game(t_vars *vars, t_animation *animation, t_map *map, char **argv)
 	map->image_file = argv[1];
 	inizialize_map(map);
 	vars->map = map;
-	if (!check_map(vars))
+	if (!check_map(vars) || !check_path(vars))
 	{
 		ft_printf("invalid map\n");
 		return (0);

@@ -6,16 +6,42 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 19:38:33 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/30 00:04:47 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/30 20:03:04 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+int	check_path(t_vars *vars)
+{
+	int	x;
+	int	y;
+	int	type;
+
+	y = 0;
+	while (vars->map->copy[y])
+	{
+		x = 0;
+		while (x < vars->map->copy[y][x])
+		{
+			type = vars->map->copy[y][x];
+			if (type == 'E' || type == 'P' || type == 'C')
+			{
+				if (!is_walkable(vars, x + 1, y) && !is_walkable(vars, x, y + 1)
+					&& !is_walkable(vars, x - 1, y) && !is_walkable(vars, x, y
+						- 1))
+					return (0);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (1);
+}
+
 void	move_sec(int keycode, t_vars *vars, t_animation *animation)
 {
-	if (keycode == 115 && is_walkable(vars, vars->player_x, vars->player_y
-			+ 1))
+	if (keycode == 115 && is_walkable(vars, vars->player_x, vars->player_y + 1))
 	{
 		vars->player_y++;
 		animation->direction = 3;

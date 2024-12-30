@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 20:31:02 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/30 00:03:11 by elavrich         ###   ########.fr       */
+/*   Updated: 2024/12/30 19:39:38 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_vars
 	int			moves;
 }				t_vars;
 
+int				check_path(t_vars *vars);
 void			populate_map(t_map *map);
 void			move_sec(int keycode, t_vars *vars, t_animation *animation);
 void			change_sprite(t_animation *animation, t_vars *vars);
