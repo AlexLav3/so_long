@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 20:31:02 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/30 20:08:02 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/01/05 23:42:27 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,13 @@ typedef struct s_vars
 	int			moves;
 }				t_vars;
 
+int				**make_vis(t_vars *vars);
+
+void			find_player(t_vars *vars, int y, int x);
+int				use_fill(t_vars *vars, int **visited);
+
+int				fill(char **copy, int x, int y, int **visited);
+
 int				invalid_char(t_vars *vars);
 
 int				check_path(t_vars *vars);
@@ -90,7 +97,7 @@ void			move_sec(int keycode, t_vars *vars, t_animation *animation);
 void			change_sprite(t_animation *animation, t_vars *vars);
 void			clean_collect(t_coll *collect);
 void			clean_map(t_map *map);
-void			clean_vars(t_vars *vars);
+void			clean_vis(int **visited, int height);
 void			clean(t_vars *vars, t_animation *animation);
 
 int				check_map(t_vars *vars);

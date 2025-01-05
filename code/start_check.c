@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 21:24:11 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/30 20:08:25 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/01/05 23:41:06 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	init_game(t_vars *vars, t_animation *animation, t_map *map, char **argv)
 	map->image_file = argv[1];
 	inizialize_map(map);
 	vars->map = map;
+	set_map(vars);
 	if (!check_map(vars) || !check_path(vars) || !invalid_char(vars))
 	{
 		ft_printf("invalid map\n");
 		return (0);
 	}
-	set_map(vars);
 	vars->win = mlx_new_window(vars->mlx, vars->window_width,
 			vars->window_height, "so_long");
 	load_map(vars);
@@ -86,28 +86,17 @@ void	clean(t_vars *vars, t_animation *animation)
 	}
 }
 
-void	clean_vars(t_vars *vars)
+void	clean_vis(int **visited, int height)
 {
 	int	i;
 
 	i = 0;
-	if (vars->map->floor)
-		mlx_destroy_image(vars->mlx, vars->map->floor);
-	if (vars->map->wall1)
-		mlx_destroy_image(vars->mlx, vars->map->wall1);
-	if (vars->map->exit)
-		mlx_destroy_image(vars->mlx, vars->map->exit);
-	if (vars->collect)
-		mlx_destroy_image(vars->mlx, vars->collect);
-	if (vars->map->copy)
+	while (i < height)
 	{
-		while (vars->map->copy[i])
-		{
-			free(vars->map->copy[i]);
-			i++;
-		}
-		free(vars->map->copy);
+		free(visited[i]);
+		i++;
 	}
+	free(visited);
 }
 
 void	map_y_x(t_vars *vars)

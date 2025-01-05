@@ -2,7 +2,7 @@ NAME = so_long
 CC = cc -g 
 CFLAGS =
 
-SOURCES = code/so_long.c code/player.c code/window_actions.c code/map.c code/checks.c code/collect.c code/start_check.c
+SOURCES = code/so_long.c code/player.c code/window_actions.c code/map.c code/checks.c code/collect.c code/start_check.c code/path.c
 OBJECTS = $(SOURCES:.c=.o)
 
 MLX_DIR = code/minilibx-linux

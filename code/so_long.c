@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 19:38:33 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/30 20:10:05 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/01/05 23:43:35 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,33 +28,6 @@ int	invalid_char(t_vars *vars)
 			if (type != 'E' && type != 'P' && type != 'C' && type != '0'
 				&& type != '1')
 				return (0);
-			x++;
-		}
-		y++;
-	}
-	return (1);
-}
-
-int	check_path(t_vars *vars)
-{
-	int	x;
-	int	y;
-	int	type;
-
-	y = 0;
-	while (vars->map->copy[y])
-	{
-		x = 0;
-		while (x < vars->map->copy[y][x])
-		{
-			type = vars->map->copy[y][x];
-			if (type == 'E' || type == 'P' || type == 'C')
-			{
-				if (!is_walkable(vars, x + 1, y) && !is_walkable(vars, x, y + 1)
-					&& !is_walkable(vars, x - 1, y) && !is_walkable(vars, x, y
-						- 1))
-					return (0);
-			}
 			x++;
 		}
 		y++;
