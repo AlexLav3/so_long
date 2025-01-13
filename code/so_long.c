@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 19:38:33 by elavrich          #+#    #+#             */
-/*   Updated: 2025/01/05 23:43:35 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/01/13 21:47:33 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		vars.mlx = mlx_init();
-		vars.is_closed = 0;
 		if (init_game(&vars, &animation, map, argv))
 		{
 			vars.animation = &animation;
 			mlx_hook(vars.win, 2, 1L << 0, ft_key_press, (void *)&vars);
 			mlx_hook(vars.win, 3, 1L << 1, ft_key_release, (void *)&vars);
+			mlx_hook(vars.win, 17, 0, ft_close, (void *)&vars);
 			mlx_loop(vars.mlx);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 20:31:02 by elavrich          #+#    #+#             */
-/*   Updated: 2025/01/05 23:42:27 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/01/13 21:43:50 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int				invalid_char(t_vars *vars);
 int				check_path(t_vars *vars);
 void			populate_map(t_map *map);
 void			move_sec(int keycode, t_vars *vars, t_animation *animation);
-void			change_sprite(t_animation *animation, t_vars *vars);
+void			change_sprite(t_animation *animation);
 void			clean_collect(t_coll *collect);
 void			clean_map(t_map *map);
 void			clean_vis(int **visited, int height);

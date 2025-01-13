@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 03:36:31 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/30 00:02:57 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/01/13 21:11:37 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	set_frames(t_animation *animation, t_vars *vars)
 			"player/walk_left2.xpm", &img_width, &img_height);
 }
 
-void	change_sprite(t_animation *animation, t_vars *vars)
+void	change_sprite(t_animation *animation)
 {
 	if (animation->direction == -1)
 		animation->current_frame = 3;

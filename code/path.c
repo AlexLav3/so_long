@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 23:24:41 by elavrich          #+#    #+#             */
-/*   Updated: 2025/01/05 23:41:59 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/01/13 21:12:48 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	check_path(t_vars *vars)
 	int	x;
 	int	y;
 	int	**visited;
-	int	i;
 
 	visited = make_vis(vars);
 	y = 0;

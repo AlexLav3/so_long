@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 03:46:29 by elavrich          #+#    #+#             */
-/*   Updated: 2024/12/30 01:56:52 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/01/13 21:40:44 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	events(t_vars *vars, t_animation *animation)
 {
 	if (vars->is_closed)
 		return ;
-	change_sprite(animation, vars);
+	change_sprite(animation);
 	collect(vars, vars->player_x, vars->player_y);
 	win(vars, vars->player_x, vars->player_y);
 	update_animation(animation, vars, vars->player_x, vars->player_y);

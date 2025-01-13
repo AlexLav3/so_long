@@ -6,7 +6,7 @@
 /*   By: elavrich <elavrich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:47:49 by elavrich          #+#    #+#             */
-/*   Updated: 2025/01/05 19:38:35 by elavrich         ###   ########.fr       */
+/*   Updated: 2025/01/13 21:12:35 by elavrich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	find_pos(t_vars *vars, t_animation *animation)
 				vars->map->copy[y][x] = '0';
 				vars->player_x = x;
 				vars->player_y = y;
-				change_sprite(animation, vars);
+				change_sprite(animation);
 				load_frame(animation, vars, vars->player_x, vars->player_y);
 				return ;
 			}
